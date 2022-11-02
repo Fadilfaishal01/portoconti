@@ -12,15 +12,20 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $with = ['getProfile'];
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
+        'pId',
+        'rId',
         'name',
         'email',
         'password',
+        'tokenUser',
+        'directoryLogin',
     ];
 
     /**
@@ -41,4 +46,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getProfile()
+    {
+        return $this->belongsTo(MProfile::class, 'pId', 'pId');
+    }
 }
