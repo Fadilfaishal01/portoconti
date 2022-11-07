@@ -13,32 +13,40 @@
                     <i class="mdi mdi-dots-horizontal"></i>
                     <span class="hide-menu">Master Data</span>
                 </li> --}}
-                {{-- <li class="sidebar-item">
+                <li class="sidebar-item">
                     <a
-                      class="sidebar-link waves-effect waves-dark @if(Request::routeIs('web-config.*')) active @endif"
+                      class="sidebar-link waves-effect waves-dark @if(Request::routeIs('master-data.*')) active @endif"
                       href="javascript:void(0)"
                       aria-expanded="false"
                     >
                         <i class="fa fa-database"></i>&nbsp;&nbsp;
-                        <span class="hide-menu">Web Config </span>&nbsp;&nbsp;
+                        <span class="hide-menu">Master Data </span>&nbsp;&nbsp;
                         <i class="fa fa-angle-right"></i>
                     </a>
-                    <ul aria-expanded="false" class="collapse first-level @if(Request::routeIs('web-config.*')) in @endif">
-                        <li class="sidebar-item @if(Request::routeIs('menu.list-menu.*')) active @endif">
-                            <a href="{{ route('menu.list-menu.index') }}" class="sidebar-link">
-                                <i class="mdi mdi-adjust"></i>
-                                <span class="hide-menu"> List Menu </span>
+                    <ul aria-expanded="false" class="collapse first-level mt-1 @if(Request::routeIs('web-config.*')) in @endif">
+                        <li class="sidebar-item @if(Request::routeIs('master-data.pendidikan.*')) active @endif">
+                            <a href="{{ route('master-data.pendidikan.index') }}" class="sidebar-link">
+                                <i class="fas fa-graduation-cap"></i> &nbsp;&nbsp;
+                                <span class="hide-menu"> Pendidikan </span>
                             </a>
                         </li>
-                        <li class="sidebar-item @if(Request::routeIs('web-config.layanan.*')) active @endif">
-                            <a href="{{ route('web-config.layanan.index') }}" class="sidebar-link">
-                                <i class="mdi mdi-adjust"></i>
-                                <span class="hide-menu"> Layanan </span>
+
+                        <li class="sidebar-item @if(Request::routeIs('master-data.kemampuan.*')) active @endif">
+                            <a href="{{ route('master-data.kemampuan.index') }}" class="sidebar-link">
+                                <i class="fas fa-user-cog"></i> &nbsp;&nbsp;
+                                <span class="hide-menu"> Kemampuan </span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item @if(Request::routeIs('master-data.hobi.*')) active @endif">
+                            <a href="{{ route('master-data.hobi.index') }}" class="sidebar-link">
+                                <i class="fas fa-user-cog"></i> &nbsp;&nbsp;
+                                <span class="hide-menu"> Hobi </span>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="sidebar-item">
+                {{-- <li class="sidebar-item">
                     <a
                       class="sidebar-link waves-effect waves-dark @if(Request::routeIs('master-data.*')) active @endif"
                       href="javascript:void(0)"

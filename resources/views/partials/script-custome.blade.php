@@ -61,6 +61,10 @@
       })
    }
 
+   $(document).ready(function() {
+      $('.tableHeader').css('background-color', '#1a8cff');
+   })
+
    @if(Session::has('success'))
       SuccessRegistrasi();
    @elseif(Session::has('loginSuccess'))
