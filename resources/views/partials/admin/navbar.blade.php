@@ -81,6 +81,14 @@
                       <p class="mb-0">{{ Auth::user()->email }}</p>
                     </div>
                   </div>
+                  <a class="dropdown-item" href="{{ route('profile.index') }}">
+                    <i data-feather="log-out" class="feather-sm text-danger me-1 ms-1"></i>
+                    Profile
+                  </a>
+                  <a class="dropdown-item" href="{{ route('ubah-kata-sandi.index') }}">
+                    <i data-feather="log-out" class="feather-sm text-danger me-1 ms-1"></i>
+                    Ubah Kata Sandi
+                  </a>
                   <a class="dropdown-item" href="{{ route('logout') }}">
                     <i data-feather="log-out" class="feather-sm text-danger me-1 ms-1"></i>
                     Logout

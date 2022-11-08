@@ -52,63 +52,55 @@
                      <p class="text-muted fs-4">
                      Enter given details for new account
                      </p>
-                     <form class="form-horizontal mt-4 pt-4 needs-validation" novalidate action="{{ route('registerAccount') }}" method="POST">
+                     <form class="form-horizontal mt-4 pt-4 needs-validation" novalidate id="formRegistrasi" method="POST">
                         @csrf
                         <div class="form-floating mb-3">
                            <input
                               type="text"
-                              class="form-control form-input-bg @if($errors->register->first('fullname')) is-invalid @endif"
-                              id="tb-rfname"
+                              class="form-control form-input-bg"
+                              id="registrasiFullname"
                               placeholder="john deo"
                               required
                               name="fullname"
                            />
                            <label for="tb-rfname">Full Name</label>
-                           @if($errors->register->first('fullname'))
-                              <div class="invalid-feedback">{{ $errors->register->first('fullname') }}</div>
-                           @endif
+                           <div class="messageErrorValidasiFullnameRegistrasi"></div>
                         </div>
                         <div class="form-floating mb-3">
                            <input
                               type="email"
-                              class="form-control form-input-bg @if($errors->register->first('emailRegister')) is-invalid @endif"
-                              id="tb-remail"
-                              placeholder="john@gmail.com"
+                              class="form-control form-input-bg"
+                              id="registrasiEmail"
+                              placeholder="contiporto@gmail.com"
                               required
                               name="emailRegister"
                            />
-                           <label for="tb-remail">Email</label>
-                           @if($errors->register->first('emailRegister'))
-                              <div class="invalid-feedback">{{ $errors->register->first('emailRegister') }}</div>
-                           @endif
+                           <label for="registrasiEmail">Email</label>
+                           <div class="messageErrorValidasiEmailRegistrasi"></div>
                         </div>
                         <div class="form-floating mb-3">
                            <input
                               type="password"
-                              class="form-control form-input-bg @if($errors->register->first('passwordRegister')) is-invalid @endif"
-                              id="text-rpassword"
+                              class="form-control form-input-bg"
+                              id="registrasiPassword"
                               placeholder="*****"
                               required
                               name="passwordRegister"
                            />
-                           <label for="text-rpassword">Password</label>
-                           @if($errors->register->first('passwordRegister'))
-                              <div class="invalid-feedback">{{ $errors->register->first('passwordRegister') }}</div>
-                           @endif
+                           <label for="registrasiPassword">Password</label>
+                           <div class="messageErrorValidasiPasswordRegistrasi"></div>
                         </div>
                         <div class="form-floating mb-3">
                            <input
                               type="password"
-                              class="form-control form-input-bg @if($errors->register->first('passwordKonfirmasiRegister')) is-invalid @endif"
-                              id="text-rcpassword"
+                              class="form-control form-input-bg"
+                              id="registrasiPasswordKonfirmasi"
                               placeholder="*****"
                               required
                               name="passwordKonfirmasiRegister"
                            />
-                           <label for="text-rcpassword">Confirm Password</label>
-                           @if($errors->register->first('passwordKonfirmasiRegister'))
-                              <div class="invalid-feedback">{{ $errors->register->first('passwordKonfirmasiRegister') }}</div>
-                           @endif
+                           <label for="registrasiPasswordKonfirmasi">Confirm Password</label>
+                           <div class="messageErrorValidasiPasswordKKonfirmasiRegistrasi"></div>
                         </div>
                         <div class="d-flex align-items-stretch button-group">
                            <button type="submit" class="btn btn-info btn-lg px-4">
@@ -132,35 +124,31 @@
                   <div class="card-body">
                      <h2>Welcome to Contiporto</h2>
                      <p class="text-muted fs-4"> New Here? <a href="javascript:void(0)" id="to-register">Create an account</a></p>
-                     <form class="form-horizontal mt-4 pt-4 needs-validation" method="POST" novalidate action="{{ route('authLogin') }}">
+                     <form class="form-horizontal mt-4 pt-4 needs-validation" method="POST" id="formLogin" novalidate>
                         @csrf
                         <div class="form-floating mb-3">
                            <input
                               type="email"
-                              class="form-control form-input-bg @if($errors->login->first('email')) is-invalid @endif"
-                              id="tb-email"
+                              class="form-control form-input-bg"
+                              id="loginEmail"
                               placeholder="name@example.com"
                               name="email"
                               required
                            />
-                           <label for="tb-email">Email</label>
-                           @if($errors->login->first('email'))
-                              <div class="invalid-feedback">{{ $errors->login->first('email') }}</div>
-                           @endif
+                           <label for="loginEmail">Email</label>
+                           <div class="messageErrorValidasiEmailLogin"></div>
                         </div>
                         <div class="form-floating mb-3">
                            <input
                               type="password"
-                              class="form-control form-input-bg @if($errors->login->first('password')) is-invalid @endif"
-                              id="text-password"
+                              class="form-control form-input-bg"
+                              id="loginPassword"
                               placeholder="*****"
                               name="password"
                               required
                            />
                            <label for="text-password">Password</label>
-                           @if($errors->login->first('password'))
-                              <div class="invalid-feedback">{{ $errors->login->first('password') }}</div>
-                           @endif
+                           <div class="messageErrorValidasiPasswordLogin"></div>
                         </div>
 
                         <div class="d-flex align-items-center mb-3">
@@ -178,7 +166,7 @@
                               Sign in
                            </button>
                            <a
-                              href="javascript:void(0)"
+                           href="{{ route('loginGoogle') }}" 
                               class="
                               btn btn-lg btn-light-danger
                               text-danger
@@ -190,7 +178,7 @@
                               ><i class="fa fa-google"></i
                            ></a>
                            <a
-                              href="javascript:void(0)"
+                              href="{{ route('redirectFacebook') }}"
                               class="
                               btn btn-lg btn-light-info
                               text-info
@@ -225,7 +213,7 @@
                                  required=""
                                  placeholder="Email address"
                               />
-                              <label for="tb-email">Email</label>
+                              <label>Email</label>
                               </div>
                            </div>
                            <div class="d-flex align-items-stretch button-group">
@@ -248,12 +236,18 @@
 
 @section('script-down')
    <script type="text/javascript">
-      $(".preloader").fadeOut();
-      
-      @if(Session::has('register'))
-         $("#loginform").hide();
-         $("#registerform").fadeIn();
+      @if(Session::has('errorLogin'))
+         return Toast.fire({
+            title: `Gagal`,
+            icon: `error`,
+            html: `{{ session('errorLogin') }}`,
+            timer: `5000`,
+            showConfirmButton: false,
+         });
       @endif
+
+      $(".preloader").fadeOut();
+
       // ---------------------------
       // Login and Recover Password
       // ---------------------------
@@ -277,28 +271,136 @@
          $("#registerform").hide();
       });
 
-      // Example starter JavaScript for disabling form submissions if there are invalid fields
-      (function () {
-         "use strict";
+      // Auth Login
+      $('#formLogin').submit(function(e) {
+         $('#loginEmail').removeClass('is-invalid');
+         $('#loginPassword').removeClass('is-invalid');
+         $('.messageErrorValidasiEmailLogin').html('');
+         $('.messageErrorValidasiPasswordLogin').html('');
 
-         // Fetch all the forms we want to apply custom Bootstrap validation styles to
-         var forms = document.querySelectorAll(".needs-validation");
+         e.preventDefault();
+         let formData = new FormData(this);
 
-         // Loop over them and prevent submission
-         Array.prototype.slice.call(forms).forEach(function (form) {
-            form.addEventListener(
-               "submit",
-               function (event) {
-                  if (!form.checkValidity()) {
-                     event.preventDefault();
-                     event.stopPropagation();
+         $.ajax({
+            type: 'POST',
+            url : "{{ route('authLogin') }}",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(data) {
+               Toast.fire({
+                  title: `${data.title}`,
+                  icon: `${data.status}`,
+                  html: `${data.message}`,
+                  timer: `${data.timer}`,
+                  showConfirmButton: false,
+               });
+
+               setTimeout(() => {
+                  window.location.href = "{{ route('dashboard.index') }}";
+               }, data.timer + 500);
+            },
+            error: function(data) {
+               $.each(data.responseJSON.errorValidasi, function(kData, vData) {
+                  if (kData == 'email') {
+                     $('#loginEmail').addClass('is-invalid');
+                     $('.messageErrorValidasiEmailLogin').html(`
+                        <span class="text-danger">${vData[0]}</span>
+                     `);
                   }
 
-                  form.classList.add("was-validated");
-               },
-               false
-            );
-         });
-      })();
+                  if (kData == 'password') {
+                     $('#loginPassword').addClass('is-invalid');
+                     $('.messageErrorValidasiPasswordLogin').html(`
+                        <span class="text-danger">${vData[0]}</span>
+                     `);
+                  }
+               })
+
+               Toast.fire({
+                  title: `${data.responseJSON.title}`,
+                  icon: `${data.responseJSON.status}`,
+                  html: `${data.responseJSON.message}`,
+                  timer: `${data.responseJSON.timer}`,
+                  showConfirmButton: false,
+               });
+            }
+         })
+      })
+
+      // Auth Registrasi
+      $('#formRegistrasi').submit(function(e) {
+         $('#registrasiFullname').removeClass('is-invalid');
+         $('#registrasiEmail').removeClass('is-invalid');
+         $('#registrasiPassword').removeClass('is-invalid');
+         $('#registrasiPasswordKonfirmasi').removeClass('is-invalid');
+         $('.messageErrorValidasiFullnameRegistrasi').html('');
+         $('.messageErrorValidasiEmailRegistrasi').html('');
+         $('.messageErrorValidasiPasswordRegistrasi').html('');
+         $('.messageErrorValidasiPasswordKKonfirmasiRegistrasi').html('');
+
+         e.preventDefault();
+         let formData = new FormData(this);
+
+         $.ajax({
+            type: 'POST',
+            url : "{{ route('registerAccount') }}",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(data) {
+               $("#loginform").fadeIn();
+               $("#recoverform").hide();
+               $("#registerform").hide();
+               Toast.fire({
+                  title: `${data.title}`,
+                  icon: `${data.status}`,
+                  html: `${data.message}`,
+                  timer: `${data.timer}`,
+                  showConfirmButton: false,
+               });
+            },
+            error: function(data) {
+               $.each(data.responseJSON.errorValidasi, function(kData, vData) {
+                  if (kData == 'fullname') {
+                     $('#registrasiFullname').addClass('is-invalid');
+                     $('.messageErrorValidasiFullnameRegistrasi').html(`
+                        <span class="text-danger">${vData[0]}</span>
+                     `);
+                  }
+
+                  if (kData == 'emailRegister') {
+                     $('#registrasiEmail').addClass('is-invalid');
+                     $('.messageErrorValidasiEmailRegistrasi').html(`
+                        <span class="text-danger">${vData[0]}</span>
+                     `);
+                  }
+
+                  if (kData == 'passwordRegister') {
+                     $('#registrasiPassword').addClass('is-invalid');
+                     $('.messageErrorValidasiPasswordRegistrasi').html(`
+                        <span class="text-danger">${vData[0]}</span>
+                     `);
+                  }
+
+                  if (kData == 'passwordKonfirmasiRegister') {
+                     $('#registrasiPasswordKonfirmasi').addClass('is-invalid');
+                     $('.messageErrorValidasiPasswordKKonfirmasiRegistrasi').html(`
+                        <span class="text-danger">${vData[0]}</span>
+                     `);
+                  }
+               })
+
+               Toast.fire({
+                  title: `${data.responseJSON.title}`,
+                  icon: `${data.responseJSON.status}`,
+                  html: `${data.responseJSON.message}`,
+                  timer: `${data.responseJSON.timer}`,
+                  showConfirmButton: false,
+               });
+            }
+         })
+      })
+
    </script>
 @endsection

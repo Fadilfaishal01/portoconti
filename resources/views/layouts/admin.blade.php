@@ -42,25 +42,25 @@
 
     </div>
 
-   <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-   <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
-   <script src="{{ asset('assets/js/app-style-switcher.js') }}"></script>
-   <script src="{{ asset('assets/js/waves.js') }}"></script>
-   <script src="{{ asset('assets/js/sidebarmenu.js') }}"></script>
-   <script src="{{ asset('assets/js/custom.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/js/app-style-switcher.js') }}"></script>
+    <script src="{{ asset('assets/js/waves.js') }}"></script>
+    <script src="{{ asset('assets/js/sidebarmenu.js') }}"></script>
+    <script src="{{ asset('assets/js/custom.js') }}"></script>
 
-   {{-- Select2 --}}
-   <script src="{{ asset('assets/js/plugins/select2/select2.full.min.js') }}"></script>
+    {{-- Select2 --}}
+    <script src="{{ asset('assets/js/plugins/select2/select2.full.min.js') }}"></script>
 
-   {{-- Swal --}}
-   <script src="{{ asset('assets/js/plugins/swal/sweetalert2.all.min.js') }}"></script>
+    {{-- Swal --}}
+    <script src="{{ asset('assets/js/plugins/swal/sweetalert2.all.min.js') }}"></script>
 
-   {{-- DataTable --}}
-   <script src="{{ asset('assets/js/plugins/datatable/jquery.dataTables.min.js') }}"></script>
-   <script src="{{ asset('assets/js/plugins/datatable/dataTables.bootstrap.min.js') }}"></script>
+    {{-- DataTable --}}
+    <script src="{{ asset('assets/js/plugins/datatable/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/datatable/dataTables.bootstrap.min.js') }}"></script>
 
-   {{-- Fontawesome --}}
-   <script src="{{ asset('assets/js/all.min.js') }}"></script>
+    {{-- Fontawesome --}}
+    <script src="{{ asset('assets/js/all.min.js') }}"></script>
     @include('partials.script-custome')
     @yield('script-down')
 </body>
