@@ -16,7 +16,7 @@ class CreateTbPendidikan extends Migration
         Schema::create('tb_pendidikan', function (Blueprint $table) {
             $table->increments('pddkId');
             $table->integer('dapId')->unsigned();
-            $table->string('pddkTempatPendidikan');
+            $table->string('pddkTempat');
             $table->date('pddkTahunMasuk');
             $table->date('pddkTahunLulus');
             $table->text('pddkDeskripsi');
